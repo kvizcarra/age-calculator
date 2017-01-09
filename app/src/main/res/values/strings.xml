@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Age Calculator</string>
+    <string name="birthday">Birthday</string>
+    <string name="button_clicked">Button clicked!</string>
+</resources>
