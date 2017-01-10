@@ -1,10 +1,12 @@
 package com.kevin.agecalculator;
 
     import android.app.DatePickerDialog;
+    import android.support.design.widget.FloatingActionButton;
     import android.support.v7.app.AppCompatActivity;
     import android.os.Bundle;
     import android.util.Log;
     import android.view.View;
+    import android.view.ViewGroup;
     import android.widget.Button;
     import android.widget.DatePicker;
     import android.widget.RelativeLayout;
@@ -26,11 +28,12 @@ package com.kevin.agecalculator;
     import icepick.State;
 
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
-    @BindView(R.id.button_birthday) Button buttonBirthday;
-    @BindView(R.id.text_view_container) RelativeLayout container;
+    @BindView(R.id.text_view_container) ViewGroup container;
+    @BindView(R.id.text_view_birthday) TextView textViewBirthday;
     @BindView(R.id.text_view_years) TextView textViewYears;
     @BindView(R.id.text_view_months) TextView textViewMonths;
     @BindView(R.id.text_view_days) TextView textViewDays;
+    @BindView(R.id.fab_birthday) FloatingActionButton fabBirthday;
 
     @State LocalDate birthday;
     @State LocalDate now;
@@ -54,8 +57,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private void calculateAge(LocalDate birthday) {
         this.birthday = birthday;
 
-        // Set button text
-        buttonBirthday.setText(birthday.format(DateTimeFormatter.ofPattern("MMMM d, yyyy")));
+        // Set birthday text
+        textViewBirthday.setText(birthday.format(DateTimeFormatter.ofPattern("MMMM d, yyyy")));
 
         // Set years, months, days text
         Period period = Period.between(birthday, now);
@@ -73,8 +76,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         Icepick.saveInstanceState(this, outState);
     }
 
-    @OnClick(R.id.button_birthday)
-    void onClick() {
+    @OnClick(R.id.fab_birthday)
+    void onFABClick() {
         // Use the current date as the default date in the picker
         LocalDate date = birthday != null ? birthday : now;
 
