@@ -17,4 +17,74 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/button_birthday" />
+
+    <RelativeLayout
+        android:id="@+id/text_view_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="34dp"
+        android:layout_below="@+id/button_birthday"
+        android:visibility="invisible"
+        tools:visibility="visible">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_view_years"
+            android:layout_alignParentStart="true"
+            tools:text="24"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
+
+        <TextView
+            android:text="years"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:layout_alignBaseline="@+id/text_view_years"
+            android:layout_alignBottom="@+id/text_view_years"
+            android:layout_toEndOf="@+id/text_view_years"
+            android:layout_marginStart="4dp"
+            android:id="@+id/text_view_years_label" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:id="@+id/text_view_months"
+            android:layout_below="@+id/text_view_years"
+            android:layout_alignParentStart="true"
+            tools:text="8"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
+
+        <TextView
+            android:text="months"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:layout_alignBaseline="@+id/text_view_months"
+            android:layout_alignBottom="@+id/text_view_months"
+            android:layout_toEndOf="@+id/text_view_months"
+            android:layout_marginStart="4dp"
+            android:id="@+id/text_view_months_label" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:id="@+id/text_view_days"
+            android:layout_below="@+id/text_view_months"
+            android:layout_alignParentStart="true"
+            tools:text="9"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
+
+        <TextView
+            android:text="days"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:layout_alignBaseline="@+id/text_view_days"
+            android:layout_alignBottom="@+id/text_view_days"
+            android:layout_toEndOf="@+id/text_view_days"
+            android:layout_marginStart="4dp"
+            android:id="@+id/text_view_days_label" />
+    </RelativeLayout>
 </RelativeLayout>
