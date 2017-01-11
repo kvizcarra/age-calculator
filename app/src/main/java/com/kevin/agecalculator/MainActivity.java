@@ -1,24 +1,23 @@
 package com.kevin.agecalculator;
 
     import android.app.DatePickerDialog;
+    import android.content.Intent;
     import android.support.design.widget.FloatingActionButton;
     import android.support.v7.app.AppCompatActivity;
     import android.os.Bundle;
-    import android.util.Log;
+    import android.support.v7.widget.Toolbar;
+    import android.view.Menu;
+    import android.view.MenuItem;
     import android.view.View;
     import android.view.ViewGroup;
-    import android.widget.Button;
     import android.widget.DatePicker;
-    import android.widget.RelativeLayout;
     import android.widget.TextView;
     import android.widget.Toast;
 
     import org.threeten.bp.LocalDate;
     import org.threeten.bp.Period;
     import org.threeten.bp.format.DateTimeFormatter;
-    import org.threeten.bp.temporal.ChronoUnit;
 
-    import java.util.Calendar;
     import java.util.Locale;
 
     import butterknife.BindView;
@@ -28,6 +27,7 @@ package com.kevin.agecalculator;
     import icepick.State;
 
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+    @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.text_view_container) ViewGroup container;
     @BindView(R.id.text_view_birthday) TextView textViewBirthday;
     @BindView(R.id.text_view_years) TextView textViewYears;
@@ -39,11 +39,25 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     @State LocalDate now;
 
     @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Icepick.saveInstanceState(this, outState);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Icepick.restoreInstanceState(this, savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        setSupportActionBar(toolbar);
 
         if (now == null) {
             now = LocalDate.now();
@@ -70,12 +84,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
     }
 
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        Icepick.saveInstanceState(this, outState);
-    }
-
     @OnClick(R.id.fab_birthday)
     void onFABClick() {
         // Use the current date as the default date in the picker
@@ -92,5 +100,18 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         this.calculateAge(LocalDate.of(year, month+1, dayOfMonth));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_info:
+                Intent intent = new Intent(this, AboutActivity.class);
+                startActivity(intent);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
