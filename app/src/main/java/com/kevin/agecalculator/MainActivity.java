@@ -1,42 +1,51 @@
 package com.kevin.agecalculator;
 
-    import android.app.DatePickerDialog;
-    import android.content.Intent;
-    import android.support.design.widget.FloatingActionButton;
-    import android.support.v7.app.AppCompatActivity;
-    import android.os.Bundle;
-    import android.support.v7.widget.Toolbar;
-    import android.view.Menu;
-    import android.view.MenuItem;
-    import android.view.View;
-    import android.view.ViewGroup;
-    import android.widget.DatePicker;
-    import android.widget.TextView;
-    import android.widget.Toast;
+import android.app.DatePickerDialog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.DatePicker;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-    import org.threeten.bp.LocalDate;
-    import org.threeten.bp.Period;
-    import org.threeten.bp.format.DateTimeFormatter;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.Period;
+import org.threeten.bp.format.DateTimeFormatter;
 
-    import java.util.Locale;
+import java.util.Locale;
 
-    import butterknife.BindView;
-    import butterknife.ButterKnife;
-    import butterknife.OnClick;
-    import icepick.Icepick;
-    import icepick.State;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import icepick.Icepick;
+import icepick.State;
 
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
-    @BindView(R.id.toolbar) Toolbar toolbar;
-    @BindView(R.id.text_view_container) ViewGroup container;
-    @BindView(R.id.text_view_birthday) TextView textViewBirthday;
-    @BindView(R.id.text_view_years) TextView textViewYears;
-    @BindView(R.id.text_view_months) TextView textViewMonths;
-    @BindView(R.id.text_view_days) TextView textViewDays;
-    @BindView(R.id.fab_birthday) FloatingActionButton fabBirthday;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+    @BindView(R.id.text_view_container)
+    ViewGroup container;
+    @BindView(R.id.text_view_birthday)
+    TextView textViewBirthday;
+    @BindView(R.id.text_view_years)
+    TextView textViewYears;
+    @BindView(R.id.text_view_months)
+    TextView textViewMonths;
+    @BindView(R.id.text_view_days)
+    TextView textViewDays;
+    @BindView(R.id.fab_birthday)
+    FloatingActionButton fabBirthday;
 
-    @State LocalDate birthday;
-    @State LocalDate now;
+    @State
+    LocalDate birthday;
+    @State
+    LocalDate now;
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -65,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
         if (birthday != null) {
             this.calculateAge(birthday);
+            this.lowerFAB();
         }
     }
 
@@ -90,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         LocalDate date = birthday != null ? birthday : now;
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(
-                this, this, date.getYear(), date.getMonthValue()-1, date.getDayOfMonth());
+                this, this, date.getYear(), date.getMonthValue() - 1, date.getDayOfMonth());
 
         // Show date picker
         datePickerDialog.show();
@@ -99,7 +109,18 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        this.calculateAge(LocalDate.of(year, month+1, dayOfMonth));
+        if (birthday == null) {
+            this.lowerFAB();
+        }
+        this.calculateAge(LocalDate.of(year, month + 1, dayOfMonth));
+    }
+
+    private void lowerFAB() {
+        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) fabBirthday.getLayoutParams();
+        layoutParams.removeRule(RelativeLayout.CENTER_IN_PARENT);
+        layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, 1);
+        layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL, 1);
+        fabBirthday.setLayoutParams(layoutParams);
     }
 
     @Override

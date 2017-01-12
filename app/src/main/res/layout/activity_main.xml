@@ -111,9 +111,10 @@
         android:clickable="true"
         app:fabSize="normal"
         app:srcCompat="@drawable/ic_cake_black_24dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
+        tools:layout_alignParentBottom="true"
+        tools:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:layout_margin="16dp"
         android:id="@+id/fab_birthday"
         android:tint="@android:color/white" />
 </RelativeLayout>
