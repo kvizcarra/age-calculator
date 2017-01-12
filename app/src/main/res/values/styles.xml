@@ -8,5 +8,30 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:colorBackground">@color/colorPrimary</item>
     </style>
+    
+    <style name="BirthdayFont" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:textColor">@android:color/secondary_text_dark</item>
+    </style>
+
+    <style name="AgeFont" parent="@android:style/TextAppearance.DeviceDefault.Large" >
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@android:color/primary_text_dark</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">monospace</item>
+    </style>
+    <style name="AgeFont.Years">
+        <item name="android:textSize">160sp</item>
+    </style>
+    <style name="AgeFont.Months">
+        <item name="android:textSize">34sp</item>
+    </style>
+    <style name="AgeFont.Days">
+        <item name="android:textSize">34sp</item>
+    </style>
+
+    <style name="AgeLabelFont" parent="@android:style/TextAppearance.DeviceDefault.Medium">
+    <item name="android:fontFamily">sans-serif-condensed</item>
+    </style>
 
 </resources>

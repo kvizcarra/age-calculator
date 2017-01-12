@@ -33,6 +33,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/text_view_birthday"
             android:layout_alignParentStart="true"
+            style="@style/BirthdayFont"
             tools:text="May 28, 1992"/>
 
         <TextView
@@ -42,14 +43,14 @@
             android:layout_alignParentStart="true"
             android:layout_below="@id/text_view_birthday"
             android:layout_marginTop="8dp"
-            tools:text="24"
-            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
+            style="@style/AgeFont.Years"
+            tools:text="24" />
 
         <TextView
             android:text="@string/years"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            style="@style/AgeLabelFont"
             android:layout_alignBaseline="@id/text_view_years"
             android:layout_alignBottom="@id/text_view_years"
             android:layout_toEndOf="@id/text_view_years"
@@ -61,16 +62,16 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:id="@+id/text_view_months"
+            style="@style/AgeFont.Months"
             android:layout_below="@id/text_view_years"
             android:layout_alignParentStart="true"
-            tools:text="8"
-            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
+            tools:text="8" />
 
         <TextView
             android:text="@string/months"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            style="@style/AgeLabelFont"
             android:layout_alignBaseline="@id/text_view_months"
             android:layout_alignBottom="@id/text_view_months"
             android:layout_toEndOf="@id/text_view_months"
@@ -82,16 +83,16 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:id="@+id/text_view_days"
+            style="@style/AgeFont.Days"
             android:layout_below="@id/text_view_months"
             android:layout_alignParentStart="true"
-            tools:text="9"
-            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large" />
+            tools:text="9" />
 
         <TextView
             android:text="@string/days"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            style="@style/AgeLabelFont"
             android:layout_alignBaseline="@id/text_view_days"
             android:layout_alignBottom="@id/text_view_days"
             android:layout_toEndOf="@id/text_view_days"
