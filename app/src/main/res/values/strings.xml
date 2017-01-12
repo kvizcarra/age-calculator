@@ -7,4 +7,5 @@
     <string name="days">days</string>
     <string name="info">Info</string>
     <string name="url_github">https://github.com/kvizcarra/age-calculator</string>
+    <string name="by_kevin_vizcarra">By Kevin Vizcarra</string>
 </resources>
