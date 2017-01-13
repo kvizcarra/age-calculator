@@ -181,3 +181,9 @@ fabric.properties
 hs_err_pid*
 
 # End of https://www.gitignore.io/api/android,macos,intellij,jetbrains,git,java
+
+### Custom ###
+
+# keystore properties for signing APKs
+keystore.properties
+
